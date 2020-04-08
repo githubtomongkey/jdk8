@@ -73,6 +73,18 @@ public class FilterApple {
 //        List<Apple> greenApples = findApples(list, "red");
         List<Apple> apple = findApple(list, new GreenAnd150WeightFilter());
 
-        System.out.println(apple);
+        List<Apple> apple1 = findApple(list, new AppleFilter() {
+            @Override
+            public boolean filter(Apple apple) {
+
+                return "yellow".equalsIgnoreCase(apple.getColor());
+            }
+        });
+
+        List<Apple> apple2 = findApple(list, (a) -> {
+            return "red".equalsIgnoreCase(a.getColor());
+        });
+
+        System.out.println(apple2);
     }
 }
